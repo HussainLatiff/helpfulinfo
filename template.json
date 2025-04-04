@@ -1,0 +1,164 @@
+{
+    "engineConfig": {
+      "defaultFlushInterval": "{{DEFAULT_FLUSH_INTERVAL}}",
+      "datasourceConfigurations": [
+        {
+          "kind": "GRAPHQL",
+          "rootNodes": [
+            {
+              "typeName": "{{ROOT_TYPE_NAME}}",
+              "fieldNames": [
+                "{{ROOT_FIELD_NAME_LIST}}"
+              ]
+            }
+            //for all root types Query,Mutations ....
+          ],
+          "childNodes": [
+            {
+              "typeName": "{{CHILD_TYPE_NAME}}",
+              "fieldNames": [
+                "{{CHILD_FIELD_NAME_LIST}}"
+              ]
+            }
+            //for all child types including the field names
+          ],
+          "overrideFieldPathFromAlias": true,
+          "customGraphql": {
+            "fetch": {
+              "url": {
+                "staticVariableContent": "{{FETCH_URL}}"
+              },
+              "method": "{{FETCH_METHOD}}",
+              "body": {},
+              "baseUrl": {},
+              "path": {}
+            },
+            "subscription": {
+              "enabled": "{{SUBSCRIPTION_ENABLED}}",
+              "url": {
+                "staticVariableContent": "{{SUBSCRIPTION_URL}}"
+              },
+              "protocol": "{{SUBSCRIPTION_PROTOCOL}}",
+              "websocketSubprotocol": "{{WEBSOCKET_SUBPROTOCOL}}"
+            },
+            "federation": {
+              "enabled": true,
+              "serviceSdl": "{{SERVICE_SDL}}"
+            }
+          },
+          "upstreamSchema": {
+            "key": "{{UPSTREAM_SCHEMA_KEY}}"
+          },
+          "requestTimeoutSeconds": "{{REQUEST_TIMEOUT_SECONDS}}",
+          "id": "{{DATASOURCE_ID}}"
+        },
+        // ... more datasourceConfigurations for the other base subgraphs, repeat from { "kind": "GRAPHQL" ...}
+      ],
+      "graphqlSchema": "{{STITCHED_GRAPHQL_SCHEMA}}",
+      "stringStorage": {
+        "{{UPSTREAM_SCHEMA_KEY}}": "{{UPSTREAM_SCHEMA_CONTENT}}",
+        // ... more stringStorage entries for the the configured base subgraphs
+      },
+      "version": "{{ENGINE_CONFIG_VERSION}}",
+      "subgraphs": [
+        {
+          "id": "{{SUBGRAPH_ID}}",
+          "name": "{{SUBGRAPH_NAME}}",
+          "routingUrl": "{{ROUTING_URL}}"
+        },
+        // ... more feature subgraphs, repeat from { "id": "{{SUBGRAPH_ID}}" ...} 
+      ],
+      "featureFlagConfigs": {
+        "configByFeatureFlagName": {
+          "{{FEATURE_FLAG_NAME}}": {
+            "engineConfig": {
+              "defaultFlushInterval": "{{FEATURE_FLAG_DEFAULT_FLUSH_INTERVAL}}",
+              "datasourceConfigurations": [
+                {
+                  "kind": "GRAPHQL",
+                  "rootNodes": [
+                    {
+                      "typeName": "{{FEATURE_SUBGRAPH_ROOT_TYPE_NAME}}",
+                      "fieldNames": [
+                        "{{FEATURE_SUBGRAPH_ROOT_FIELD_NAME}}"
+                      ]
+                    }
+                    //for all root types Query,Mutations ....
+                  ],
+                  "childNodes": [
+                    {
+                      "typeName": "{{FEATURE_SUBGRAPH_CHILD_TYPE_NAME}}",
+                      "fieldNames": [
+                        "{{FEATURE_SUBGRAPH_CHILD_FIELD_NAME_LIST}}"
+                      ]
+                    }
+                    //for all child types including the field names
+                  ],
+                  "overrideFieldPathFromAlias": true,
+                  "customGraphql": {
+                    "fetch": {
+                      "url": {
+                        "staticVariableContent": "{{FEATURE_SUBGRAPH_URL}}"
+                      },
+                      "method": "{{FEATURE_SUBGRAPH_FETCH_METHOD}}",
+                      "body": {},
+                      "baseUrl": {},
+                      "path": {}
+                    },
+                    "subscription": {
+                      "enabled": "{{FEATURE_SUBGRAPH_SUBSCRIPTION_ENABLED}}",
+                      "url": {
+                        "staticVariableContent": "{{FEATURE_SUBGRAPH_URL}}"
+                      },
+                      "protocol": "{{FEATURE_SUBGRAPH_SUBSCRIPTION_PROTOCOL}}",
+                      "websocketSubprotocol": "{{FEATURE_SUBGRAPH_WEBSOCKET_SUBPROTOCOL}}"
+                    },
+                    "federation": {
+                      "enabled": true,
+                      "serviceSdl": "{{FEATURE_SUBGRAPH_SERVICE_SDL}}"
+                    }
+                  },
+                  "upstreamSchema": {
+                    "key": "{{FEATURE_SUBGRAPH_UPSTREAM_SCHEMA_KEY}}"
+                  },
+                  "requestTimeoutSeconds": "{{FEATURE_SUBGRAPH_REQUEST_TIMEOUT_SECONDS}}",
+                  "id": "{{FEATURE_SUBGRAPH_DATASOURCE_ID}}"
+                },
+                // ... more feature subgraphs using the same feature flag datasourceConfigurations, repeat from { "kind": "GRAPHQL" ...}
+              ],
+              "fieldConfigurations": [
+                {
+                  "typeName": "{{FEATURE_SUBGRAPH_FIELD_CONFIG_TYPE_NAME}}",
+                  "fieldName": "{{FEATURE_SUBGRAPH_FIELD_CONFIG_FIELD_NAME_LIST}}",
+                  "argumentsConfiguration": [
+                    {
+                      "name": "{{FEATURE_FLAG_ARGUMENT_CONFIG_NAME}}",
+                      "sourceType": "{{FEATURE_FLAG_ARGUMENT_CONFIG_SOURCE_TYPE}}"
+                    }
+                  ]
+                }
+                // ... more feature flag fieldConfigurations
+              ],
+               "graphqlSchema": "{{FEATURE_SUBGRAPHS_STITCHED_GRAPHQL_SCHEMA}}",
+               "stringStorage": {
+                  "{{FEATURE_FLAG_UPSTREAM_SCHEMA_KEY}}": "{{FEATURE_FLAG_UPSTREAM_SCHEMA_CONTENT}}"
+                    // ,... more stringStorage entries for the the configured feature subgraphs for the feature flag
+                },
+              "version": "{{FEATURE_FLAG_ENGINE_CONFIG_VERSION}}",
+              "subgraphs": [
+                {
+                  "id": "{{FEATURE_FLAG'S_SUBGRAPH_ID}}",
+                  "name": "{{FEATURE_FLAG_SUBGRAPH_NAME}}",
+                  "routingUrl": "{{FEATURE_FLAG_ROUTING_URL}}"
+                }
+                // ... more feature subgraphs using the same feature flag
+              ]
+            }
+          }
+          // ... more featureFlagConfigs
+        }
+      }
+    },
+    "compatibilityVersion": "{{COMPATIBILITY_VERSION}}"
+  }
+  
