@@ -431,7 +431,7 @@
                     }
                 ]
             },
-            "second-flageded": {
+            "second-flag": {
                 "engineConfig": {
                     "defaultFlushInterval": "500",
                     "datasourceConfigurations": [

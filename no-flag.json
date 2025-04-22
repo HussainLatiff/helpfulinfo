@@ -67,6 +67,7 @@
     ],
     "featureFlagConfigs": {
         "configByFeatureFlagName": {
+            
         }
     },
     "compatibilityVersion": "1:{{$COMPOSITION__VERSION}}"
