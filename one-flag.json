@@ -67,7 +67,7 @@
     ],
     "featureFlagConfigs": {
         "configByFeatureFlagName": {
-            "new-flag": {
+            "countries-1.0.0-federatedgraph": {
                 "engineConfig": {
                     "defaultFlushInterval": "500",
                     "datasourceConfigurations": [

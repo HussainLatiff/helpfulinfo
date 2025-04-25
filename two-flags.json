@@ -67,7 +67,7 @@
     ],
     "featureFlagConfigs": {
         "configByFeatureFlagName": {
-            "new-flag": {
+            "countries-1.0.0-federatedgraph": {
                 "engineConfig": {
                     "defaultFlushInterval": "500",
                     "datasourceConfigurations": [
@@ -431,7 +431,7 @@
                     }
                 ]
             },
-            "second-flag": {
+            "spacex-1.0.0-monograph": {
                 "engineConfig": {
                     "defaultFlushInterval": "500",
                     "datasourceConfigurations": [
